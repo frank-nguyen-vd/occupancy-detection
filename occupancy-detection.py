@@ -16,3 +16,9 @@ signature = dataset.iloc[:, :-1].values
 # occupancy is an indicator to determine if the room is occupied (0 = NO and 1 = YES)
 occupancy = dataset.iloc[:, -1].values
 
+####################################################
+# TAKING CARE OF MISSING DATA                      #
+####################################################
+imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
+imputer.fit(signature[:, 0:3])
+signature[:, 0:3] = imputer.transform(signature[:, 0:3])
