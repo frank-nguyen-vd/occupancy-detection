@@ -22,3 +22,9 @@ occupancy = dataset.iloc[:, -1].values
 imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
 imputer.fit(signature[:, 0:3])
 signature[:, 0:3] = imputer.transform(signature[:, 0:3])
+
+####################################################
+# FEATURE SCALING                                  #
+####################################################
+sc = StandardScaler()
+signature = sc.fit_transform(signature)
