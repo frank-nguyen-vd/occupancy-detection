@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 
 ####################################################
 # DEFINE SYSTEM PARAMETERS                         #
@@ -98,3 +99,17 @@ test_prediction = regressor.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("LOGISTIC REGRESSION MODEL", test_result, test_prediction)
+
+####################################################
+# K-NEAREST-NEIGHBOURS                            #
+####################################################
+
+# Training the model
+regressor = KNeighborsClassifier(n_neighbors=100, weights='distance', metric='minkowski', p=2)
+regressor.fit(train_condition, train_result)
+
+# Testing the model
+test_prediction = regressor.predict(test_condition)
+
+# Printing the report
+print_accuracy_report("K-NEAREST-NEIGHBOURS", test_result, test_prediction)
