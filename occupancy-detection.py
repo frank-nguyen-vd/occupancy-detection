@@ -7,6 +7,7 @@ import pandas as pd
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 
 ####################################################
 # DEFINE SYSTEM PARAMETERS                         #
@@ -61,3 +62,23 @@ test_prediction = regressor.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("DECISION TREE REGRESSION MODEL", test_result, test_prediction)
+
+####################################################
+# RANDOM FOREST REGRESSION MODEL                  #
+####################################################
+# Step 1: Pick at random K data points from the Training set
+# Step 2: Build the Decision Tree associated to these K data points
+# Step 3: Using Step 1 & 2 to build N decision trees
+# Step 4: For a new data point, make each one of N trees predict
+#         a value for the new data point. The final prediction is
+#         the average of N predicted values
+
+#  Training the model
+regressor = RandomForestRegressor(n_estimators = 10, random_state = 0)
+regressor.fit(train_condition, train_result)
+
+# Testing the model
+test_result = regressor.predict(test_condition)
+
+# Printing the report
+print_accuracy_report("RANDOM FOREST REGRESSION MODEL", test_result, test_prediction)
