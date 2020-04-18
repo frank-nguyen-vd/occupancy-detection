@@ -22,7 +22,7 @@ def print_accuracy_report(strategy, result, prediction):
     for i in range(0, no_of_tests):
         if result[i] == prediction[i]:
             no_of_correct += 1
-    print(f"The accuracy of {strategy} is {no_of_correct / no_of_tests * 100}%")
+    print(f"The accuracy of {strategy} is {round(no_of_correct / no_of_tests * 100, 2)}%")
 
 def import_dataset(path):
     dataset = pd.read_csv(path)
