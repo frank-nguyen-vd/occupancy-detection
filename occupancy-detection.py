@@ -24,24 +24,26 @@ def print_accuracy_report(strategy, result, prediction):
             no_of_correct += 1
     print(f"The accuracy of {strategy} is {no_of_correct / no_of_tests * 100}%")
 
-####################################################
-# IMPORTING THE TRAINING SET                       #
-####################################################
-dataset = pd.read_csv('training_set.csv')
-# signature is a set of measurements (Temperature, Humidity and CO2 used to determine the occupancy
-signature = dataset.iloc[:, :-1].values
-# occupancy is an indicator to determine if the room is occupied (0 = NO and 1 = YES)
-occupancy = dataset.iloc[:, -1].values
+def import_dataset(path):
+    dataset = pd.read_csv(path)
+    # condition is a set of measurements (Temperature, Humidity and CO2 used to determine the occupancy
+    condition = dataset.iloc[:, :-1].values
+    # result is an indicator to determine if the room is occupied (0 = NO and 1 = YES)
+    result = dataset.iloc[:, -1].values
+
+    # taking care of missing data
+    imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
+    imputer.fit(condition[:, 0:3])
+    condition[:, 0:3] = imputer.transform(condition[:, 0:3])
+
+    # feature scaling
+    sc = StandardScaler()
+    condition = sc.fit_transform(condition)    
+
+    return condition, result
 
 ####################################################
-# TAKING CARE OF MISSING DATA                      #
+# IMPORTING THE DATA SET                           #
 ####################################################
-imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
-imputer.fit(signature[:, 0:3])
-signature[:, 0:3] = imputer.transform(signature[:, 0:3])
-
-####################################################
-# FEATURE SCALING                                  #
-####################################################
-sc = StandardScaler()
-signature = sc.fit_transform(signature)
+train_condition, train_result = import_dataset(TRAINING_DATA)
+test_condition, test_result   = import_dataset(TESTING_DATA)
