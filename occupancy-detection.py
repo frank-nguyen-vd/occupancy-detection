@@ -8,6 +8,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LogisticRegression
 
 ####################################################
 # DEFINE SYSTEM PARAMETERS                         #
@@ -83,3 +84,17 @@ test_prediction = regressor.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("RANDOM FOREST REGRESSION MODEL", test_result, test_prediction)
+
+####################################################
+# LOGISTIC REGRESSION MODEL                        #
+####################################################
+
+#  Training the model
+regressor = LogisticRegression(random_state = 0)
+regressor.fit(train_condition, train_result)
+
+# Testing the model
+test_prediction = regressor.predict(test_condition)
+
+# Printing the report
+print_accuracy_report("LOGISTIC REGRESSION MODEL", test_result, test_prediction)
