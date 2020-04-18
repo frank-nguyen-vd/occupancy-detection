@@ -56,7 +56,7 @@ test_condition, test_result   = import_dataset(TESTING_DATA)
 ####################################################
 
 # Training the model
-regressor = DecisionTreeRegressor(random_state = 0)
+regressor = DecisionTreeRegressor(random_state=0)
 regressor.fit(train_condition, train_result)
 
 # Testing the model
@@ -76,7 +76,7 @@ print_accuracy_report("DECISION TREE REGRESSION MODEL", test_result, test_predic
 #         the average of N predicted values
 
 #  Training the model
-regressor = RandomForestRegressor(n_estimators = 100, random_state = 0)
+regressor = RandomForestRegressor(n_estimators=100, random_state=0)
 regressor.fit(train_condition, train_result)
 
 # Testing the model
@@ -90,7 +90,7 @@ print_accuracy_report("RANDOM FOREST REGRESSION MODEL", test_result, test_predic
 ####################################################
 
 #  Training the model
-regressor = LogisticRegression(random_state = 0)
+regressor = LogisticRegression(random_state=0)
 regressor.fit(train_condition, train_result)
 
 # Testing the model
