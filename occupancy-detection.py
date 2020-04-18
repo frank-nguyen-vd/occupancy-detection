@@ -13,6 +13,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
 
 ####################################################
 # DEFINE SYSTEM PARAMETERS                         #
@@ -159,4 +160,16 @@ test_prediction = model.predict(test_condition)
 # Printing the report
 print_accuracy_report("RANDOM FOREST CLASSIFIER", test_result, test_prediction)
 
+####################################################
+# NAIVE BAYES                                      #
+####################################################
 
+# Training the model
+model = GaussianNB()
+model.fit(train_condition, train_result)
+
+# Testing the model
+test_prediction = model.predict(test_condition)
+
+# Printing the report
+print_accuracy_report("NAIVE BAYES", test_result, test_prediction)
