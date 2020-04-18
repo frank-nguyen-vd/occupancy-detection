@@ -8,6 +8,17 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 
 ####################################################
+# DEFINE HELPER FUNCTIONS                          #
+####################################################
+def print_accuracy_report(strategy, result, prediction):
+    no_of_tests = prediction.shape[0]
+    no_of_correct = 0
+    for i in range(0, no_of_tests):
+        if result[i] == prediction[i]:
+            no_of_correct += 1
+    print(f"The accuracy of {strategy} is {no_of_correct / no_of_tests * 100}%")
+
+####################################################
 # IMPORTING THE TRAINING SET                       #
 ####################################################
 dataset = pd.read_csv('training_set.csv')
