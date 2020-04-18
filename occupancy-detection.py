@@ -53,6 +53,7 @@ test_condition, test_result   = import_dataset(TESTING_DATA)
 ####################################################
 # DECISION TREE REGRESSION MODEL                   #
 ####################################################
+
 # Training the model
 regressor = DecisionTreeRegressor(random_state = 0)
 regressor.fit(train_condition, train_result)
@@ -64,7 +65,7 @@ test_prediction = regressor.predict(test_condition)
 print_accuracy_report("DECISION TREE REGRESSION MODEL", test_result, test_prediction)
 
 ####################################################
-# RANDOM FOREST REGRESSION MODEL                  #
+# RANDOM FOREST REGRESSION MODEL                   #
 ####################################################
 # Step 1: Pick at random K data points from the Training set
 # Step 2: Build the Decision Tree associated to these K data points
