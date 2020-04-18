@@ -12,6 +12,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 ####################################################
 # DEFINE SYSTEM PARAMETERS                         #
@@ -143,3 +144,19 @@ test_prediction = model.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("DECISION TREE CLASSIFIER", test_result, test_prediction)
+
+####################################################
+# RANDOM FOREST CLASSIFIER                         #
+####################################################
+
+# Training the model
+model = RandomForestClassifier(n_estimators = 100, criterion = 'entropy', random_state = 0)
+model.fit(train_condition, train_result)
+
+# Testing the model
+test_prediction = model.predict(test_condition)
+
+# Printing the report
+print_accuracy_report("RANDOM FOREST CLASSIFIER", test_result, test_prediction)
+
+
