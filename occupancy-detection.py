@@ -79,7 +79,7 @@ regressor = RandomForestRegressor(n_estimators = 10, random_state = 0)
 regressor.fit(train_condition, train_result)
 
 # Testing the model
-test_result = regressor.predict(test_condition)
+test_prediction = regressor.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("RANDOM FOREST REGRESSION MODEL", test_result, test_prediction)
