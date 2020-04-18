@@ -24,13 +24,13 @@ TESTING_DATA  = "test_set.csv"
 ####################################################
 # DEFINE HELPER FUNCTIONS                          #
 ####################################################
-def print_accuracy_report(strategy, result, prediction):
+def print_accuracy_report(model, result, prediction):
     no_of_tests = prediction.shape[0]
     no_of_correct = 0
     for i in range(0, no_of_tests):
         if result[i] == prediction[i]:
             no_of_correct += 1
-    print(f"The accuracy of {strategy} is {round(no_of_correct / no_of_tests * 100, 2)}%")
+    print(f"The accuracy of {model} model is {round(no_of_correct / no_of_tests * 100, 2)}%")
 
 def import_dataset(path):
     dataset = pd.read_csv(path)
@@ -57,7 +57,7 @@ train_condition, train_result = import_dataset(TRAINING_DATA)
 test_condition, test_result   = import_dataset(TESTING_DATA)
 
 ####################################################
-# DECISION TREE REGRESSION MODEL                   #
+# DECISION TREE REGRESSION                         #
 ####################################################
 
 # Training the model
@@ -68,10 +68,10 @@ model.fit(train_condition, train_result)
 test_prediction = model.predict(test_condition)
 
 # Printing the report
-print_accuracy_report("DECISION TREE REGRESSION MODEL", test_result, test_prediction)
+print_accuracy_report("DECISION TREE REGRESSION", test_result, test_prediction)
 
 ####################################################
-# RANDOM FOREST REGRESSION MODEL                   #
+# RANDOM FOREST REGRESSION                         #
 ####################################################
 # Step 1: Pick at random K data points from the Training set
 # Step 2: Build the Decision Tree associated to these K data points
@@ -88,10 +88,10 @@ model.fit(train_condition, train_result)
 test_prediction = model.predict(test_condition)
 
 # Printing the report
-print_accuracy_report("RANDOM FOREST REGRESSION MODEL", test_result, test_prediction)
+print_accuracy_report("RANDOM FOREST REGRESSION", test_result, test_prediction)
 
 ####################################################
-# LOGISTIC REGRESSION MODEL                        #
+# LOGISTIC REGRESSION                              #
 ####################################################
 
 #  Training the model
@@ -102,10 +102,10 @@ model.fit(train_condition, train_result)
 test_prediction = model.predict(test_condition)
 
 # Printing the report
-print_accuracy_report("LOGISTIC REGRESSION MODEL", test_result, test_prediction)
+print_accuracy_report("LOGISTIC REGRESSION", test_result, test_prediction)
 
 ####################################################
-# K-NEAREST-NEIGHBOURS                            #
+# K-NEAREST-NEIGHBOURS                             #
 ####################################################
 
 # Training the model
