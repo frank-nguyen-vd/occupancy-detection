@@ -52,12 +52,12 @@ test_condition, test_result   = import_dataset(TESTING_DATA)
 ####################################################
 # DECISION TREE REGRESSION MODEL                   #
 ####################################################
-# Traing the model
+# Training the model
 regressor = DecisionTreeRegressor(random_state = 0)
 regressor.fit(train_condition, train_result)
 
-# Test the model
+# Testing the model
 test_prediction = regressor.predict(test_condition)
 
-# Print the report
+# Printing the report
 print_accuracy_report("DECISION TREE REGRESSION MODEL", test_result, test_prediction)
