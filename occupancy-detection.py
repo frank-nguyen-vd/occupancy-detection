@@ -58,11 +58,11 @@ test_condition, test_result   = import_dataset(TESTING_DATA)
 ####################################################
 
 # Training the model
-regressor = DecisionTreeRegressor(random_state=0)
-regressor.fit(train_condition, train_result)
+model = DecisionTreeRegressor(random_state=0)
+model.fit(train_condition, train_result)
 
 # Testing the model
-test_prediction = regressor.predict(test_condition)
+test_prediction = model.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("DECISION TREE REGRESSION MODEL", test_result, test_prediction)
@@ -78,11 +78,11 @@ print_accuracy_report("DECISION TREE REGRESSION MODEL", test_result, test_predic
 #         the average of N predicted values
 
 #  Training the model
-regressor = RandomForestRegressor(n_estimators=100, random_state=0)
-regressor.fit(train_condition, train_result)
+model = RandomForestRegressor(n_estimators=100, random_state=0)
+model.fit(train_condition, train_result)
 
 # Testing the model
-test_prediction = regressor.predict(test_condition)
+test_prediction = model.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("RANDOM FOREST REGRESSION MODEL", test_result, test_prediction)
@@ -92,11 +92,11 @@ print_accuracy_report("RANDOM FOREST REGRESSION MODEL", test_result, test_predic
 ####################################################
 
 #  Training the model
-regressor = LogisticRegression(random_state=0)
-regressor.fit(train_condition, train_result)
+model = LogisticRegression(random_state=0)
+model.fit(train_condition, train_result)
 
 # Testing the model
-test_prediction = regressor.predict(test_condition)
+test_prediction = model.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("LOGISTIC REGRESSION MODEL", test_result, test_prediction)
@@ -106,11 +106,11 @@ print_accuracy_report("LOGISTIC REGRESSION MODEL", test_result, test_prediction)
 ####################################################
 
 # Training the model
-regressor = KNeighborsClassifier(n_neighbors=100, weights='distance', metric='minkowski', p=2)
-regressor.fit(train_condition, train_result)
+model = KNeighborsClassifier(n_neighbors=100, weights='distance', metric='minkowski', p=2)
+model.fit(train_condition, train_result)
 
 # Testing the model
-test_prediction = regressor.predict(test_condition)
+test_prediction = model.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("K-NEAREST-NEIGHBOURS", test_result, test_prediction)
@@ -120,11 +120,11 @@ print_accuracy_report("K-NEAREST-NEIGHBOURS", test_result, test_prediction)
 ####################################################
 
 # Training the model
-regressor = SVC(kernel = 'sigmoid', random_state = 0)
-regressor.fit(train_condition, train_result)
+model = SVC(kernel = 'sigmoid', random_state = 0)
+model.fit(train_condition, train_result)
 
 # Testing the model
-test_prediction = regressor.predict(test_condition)
+test_prediction = model.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("SUPPORT VECTOR MACHINE", test_result, test_prediction)
