@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
+from sklearn.tree import DecisionTreeRegressor
 
 ####################################################
 # DEFINE SYSTEM PARAMETERS                         #
@@ -47,3 +48,16 @@ def import_dataset(path):
 ####################################################
 train_condition, train_result = import_dataset(TRAINING_DATA)
 test_condition, test_result   = import_dataset(TESTING_DATA)
+
+####################################################
+# DECISION TREE REGRESSION MODEL                   #
+####################################################
+# Traing the model
+regressor = DecisionTreeRegressor(random_state = 0)
+regressor.fit(train_condition, train_result)
+
+# Test the model
+test_prediction = regressor.predict(test_condition)
+
+# Print the report
+print_accuracy_report("DECISION TREE REGRESSION MODEL", test_result, test_prediction)
