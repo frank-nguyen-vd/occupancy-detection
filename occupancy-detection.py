@@ -8,6 +8,12 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 
 ####################################################
+# DEFINE SYSTEM PARAMETERS                         #
+####################################################
+TRAINING_DATA = "training_set.csv"
+TESTING_DATA  = "test_set.csv"
+
+####################################################
 # DEFINE HELPER FUNCTIONS                          #
 ####################################################
 def print_accuracy_report(strategy, result, prediction):
