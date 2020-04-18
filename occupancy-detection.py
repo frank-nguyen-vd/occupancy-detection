@@ -10,6 +10,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 
 ####################################################
 # DEFINE SYSTEM PARAMETERS                         #
@@ -113,3 +114,17 @@ test_prediction = regressor.predict(test_condition)
 
 # Printing the report
 print_accuracy_report("K-NEAREST-NEIGHBOURS", test_result, test_prediction)
+
+####################################################
+# SUPPORT VECTOR MACHINE                           #
+####################################################
+
+# Training the model
+regressor = SVC(kernel = 'sigmoid', random_state = 0)
+regressor.fit(train_condition, train_result)
+
+# Testing the model
+test_prediction = regressor.predict(test_condition)
+
+# Printing the report
+print_accuracy_report("SUPPORT VECTOR MACHINE", test_result, test_prediction)
